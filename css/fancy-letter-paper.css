@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #ccc;
+}
+
+article {
+  width: 210mm;
+  height: 297mm;
+  margin: 20px auto;
+  position: relative;
+}
+
+address {
+  position: absolute;
+  bottom: 8mm;
+  right: 20mm;
+}
+
+h1 {
+  position: absolute;
+  top: 12mm;
+  left: 20mm;
+  width: 128px;
+  height: 128px;
+  font-size: 20px;
+  letter-spacing: 1px;
+  text-align: center;
+  padding: 44px 0;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+/* Your CSS below here */
+article{
+  background-image: url(assets/top-image.png),url(assets/bottom-image.png),linear-gradient(180deg, rgba(235,235,237,1) 0%, rgba(183,183,185,1) 0%, rgba(237,237,237,1) 26%, rgba(254,254,254,1) 82%, rgba(173,173,173,1) 100%);;
+  background-repeat: no-repeat;
+    background-position: 0 top, 0 bottom;
+    border: 1px solid #aaa;
+    
+}
+h1{
+  background-image: url(assets/logo.png);
+  filter: drop-shadow(5px 2px 3px black);
+  /* 替代filter */
+  /* box-shadow: 3px 3px 4px black;
+  border-radius: 50%; */
+}
