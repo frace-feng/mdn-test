@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简单的日历</title>
+  <style>
+    ul{
+      list-style-type: none;
+      padding: 0;
+    }
+    li{
+      display: block;
+    float: left;
+    width: 25%;
+    border: 2px solid white;
+    padding: 5px;
+    height: 40px;
+    background-color: #4a2db6;
+    color: white;
+    }
+  </style>
+</head>
+<body>
+  <select name="" id="">
+    <option value="1">1月</option>
+    <option value="2">2月</option>
+    <option value="3">3月</option>
+    <option value="4">4月</option>
+  </select>
+  <h1></h1>
+  
+  <ul>
+
+  </ul>
+  <script>
+    const select = document.querySelector('select');
+const list = document.querySelector('ul');
+const h1 = document.querySelector('h1');
+
+select.addEventListener('change', () => {
+  const choice = select.value;
+  let days=0;
+
+  // ADD CONDITIONAL HERE
+  // 1357 8 10 12
+  if([1,3,5,7,8,10,12].indexOf(Number(choice)) !== -1){
+    days = 31;
+  }else if(Number(choice) === 2){
+    days = 28;
+  }else {
+    days = 30;
+  }
+
+  createCalendar(days, choice);
+});
+
+function createCalendar(days, choice) {
+  list.innerHTML = '';
+  h1.textContent = choice;
+  for (let i = 1; i <= days; i++) {
+    const listItem = document.createElement('li');
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
+}
+
+createCalendar(31,'January');
+
+  </script>
+</body>
+</html>
