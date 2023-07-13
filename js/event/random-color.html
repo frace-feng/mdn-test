@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Random color example — event handler attribute</title>
+    <style>
+      button {
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Change color</button>
+    <script>
+      const btn = document.querySelector("button");
+
+      function random(number) {
+        return Math.floor(Math.random() * (number + 1));
+      }
+
+      const controller = new AbortController();
+
+      btn.addEventListener(
+        "click",
+        () => {
+          const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`;
+          document.body.style.backgroundColor = rndCol;
+        },
+        { signal: controller.signal } // 向该处理器传递 AbortSignal
+      );
+
+      controller.abort(); // 移除任何/所有与该控制器相关的事件处理器
+
+    </script>
+  </body>
+</html>

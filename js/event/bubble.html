@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .hidden {
+        visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <button>显示视频</button>
+
+    <div class="hidden">
+      <video>
+        <source
+          src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm"
+          type="video/webm"
+        />
+        <p>
+          你的浏览器不支持 HTML 视频，这里有视频的<a href="rabbit320.mp4"
+            >替代链接</a
+          >。
+        </p>
+      </video>
+    </div>
+    <script>
+      const btn = document.querySelector("button");
+      const box = document.querySelector("div");
+      const video = document.querySelector("video");
+
+      btn.addEventListener("click", () => box.classList.remove("hidden"));
+      video.addEventListener("click", (e) => {
+        video.play();
+        e.stopPropagation();
+      });
+      box.addEventListener("click", () => box.classList.add("hidden"));
+    </script>
+  </body>
+</html>
