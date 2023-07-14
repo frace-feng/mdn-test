@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+      }
+
+      html {
+        font-family: sans-serif;
+        height: 100%;
+      }
+
+      body {
+        overflow: hidden;
+        height: inherit;
+      }
+
+      h1 {
+        font-size: 2rem;
+        letter-spacing: -1px;
+        position: absolute;
+        margin: 0;
+        top: -4px;
+        right: 5px;
+
+        color: transparent;
+        text-shadow: 0 0 4px white;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const width = (canvas.width = window.innerWidth);
+      const height = (canvas.height = window.innerHeight);
+
+
+      function Shape(x, y, sX, sY, size) {
+        this.x = x;
+        this.y = y;
+        this.sX = sX;
+        this.sY = sY;
+        this.size = size;
+      }
+      Shape.prototype.draw = function () {
+        ctx.beginPath();
+        ctx.fillStyle = "red";
+        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+
+      Shape.prototype.update = function () {
+        if (this.x + this.size > width) {
+          this.sX = -this.sX;
+        }
+        if (this.y + this.size > height) {
+          this.sY = -this.sY;
+        }
+        if (this.x <= this.size) {
+          this.sX = -this.sX;
+        }
+        if (this.y <= this.size) {
+          this.sY = -this.sY;
+        }
+        this.x += this.sX;
+        this.y += this.sY;
+      };
+      let cir = new Shape(20,70,24,14,15);
+      function loop() {
+        ctx.fillStyle = "rgba(0,0,0,0.25)";
+        ctx.fillRect(0, 0, width, height);
+        cir.draw();
+        cir.update();
+        requestAnimationFrame(loop);
+      }
+      loop();
+    </script>
+  </body>
+</html>
