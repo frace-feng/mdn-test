@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas>
+      <p>你的浏览器竟然不支持 canvas！</p>
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const width = (canvas.width = window.innerWidth);
+      const height = (canvas.height = window.innerHeight);
+
+      ctx.fillStyle = "rgb(255, 0, 0)";
+      ctx.beginPath();
+      ctx.moveTo(50, 50);
+      // 绘制路径
+      ctx.fill(); // 没有后面语句是没有显示出图形的
+
+      function degToRad(degrees) {
+        return (degrees * Math.PI) / 180;
+      }
+
+      ctx.lineTo(150, 50); //首先绘制一条直线，终点坐标为 (150, 50)
+      var triHeight = 50 * Math.tan(degToRad(60)); //临边长度乘以角的正切等于对边长度。于是可得三角形的高为 50 * Math.tan(degToRad(60))。
+      ctx.lineTo(100, 50 + triHeight); //有了三角形的高，我们来绘制另一条线，终点坐标为 (100, 50+triHeight)。
+      ctx.lineTo(50, 50);
+      ctx.fill();
+      
+      // arc() 函数有六个参数。
+      // 前两个指定圆心的位置坐标，
+      // 第三个是圆的半径，
+      // 第四、五个是绘制弧的起、止角度（给定 0° 和 360° 便能绘制一个完整的圆），
+      // 第六个是绘制方向（false 是顺时针，true 是逆时针）。
+
+      ctx.fillStyle = "rgb(0, 0, 255)";
+      ctx.beginPath();
+      ctx.arc(150, 106, 50, degToRad(0), degToRad(360), false);
+      ctx.fill();
+
+      ctx.fillStyle = "yellow";
+      ctx.beginPath();
+      ctx.arc(200, 106, 50, degToRad(-45), degToRad(45), true);
+      ctx.lineTo(200, 106);
+      ctx.fill();
+    </script>
+  </body>
+</html>

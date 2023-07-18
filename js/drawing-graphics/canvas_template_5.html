@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <canvas>
+      <p>你的浏览器竟然不支持 canvas！</p>
+    </canvas>
+
+    <script>
+      const canvas = document.querySelector("canvas");
+      const ctx = canvas.getContext("2d");
+
+      const width = (canvas.width = window.innerWidth);
+      const height = (canvas.height = window.innerHeight);
+
+      ctx.fillStyle = "rgb(0, 0, 0)"; //填充颜色
+      
+      ctx.beginPath();
+      ctx.fillRect(0, 0, width, height);
+
+      ctx.translate(width / 2, height / 2); //可用于移动画布的原点,这会使原点 (0, 0) 从画布左上顶点移动至画布正中心。
+
+      function degToRad(degrees) {
+        return (degrees * Math.PI) / 180;
+      }
+
+      function rand(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      var length = 250;
+      var moveOffset = 20;
+
+      var image = new Image();
+      image.src = "../../assets/favorite-4_th.jpg";
+      const randomSize = (width / 2) + 20;
+      image.onload = function () {
+        for (var i = 0; i < length; i++) {
+          // ctx.fillStyle =
+          //   "rgba(" + (255 - length) + ", 0, " + (255 - length) + ", 0.9)";
+          ctx.moveTo(moveOffset, moveOffset);
+          ctx.drawImage(image, rand(-10,10), rand(-10,10),randomSize,randomSize,0,0,200,200);
+
+          ctx.fill();
+
+          length--;
+          moveOffset += 0.7;
+          ctx.rotate(degToRad(5));
+        }
+      };
+    </script>
+  </body>
+</html>
