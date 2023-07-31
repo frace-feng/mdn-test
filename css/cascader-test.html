@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>级联测验</title>
+  <style>
+          @layer yellow, purple, green;
+
+@layer yellow {
+  #outer div ul .nav a {
+    padding: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+}
+@layer purple {
+  div div li a {
+    color: rebeccapurple !important;
+  }
+}
+@layer green {
+  a {
+    color: lightgreen;
+  }
+}               
+
+  </style>
+</head>
+<body>
+  <div id="outer" class="container">
+    <div id="inner" class="container">
+      <ul>
+        <li class="nav"><a href="#">One</a></li>
+        <li class="nav"><a href="#">Two</a></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
