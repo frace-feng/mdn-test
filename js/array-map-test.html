@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="https://wzrd.in/standalone/tape@latest"></script>
+<script src="https://wzrd.in/standalone/tap-browser-color@latest"></script> -->
+<script>
+  // window.test = tape;
+  // tapBrowserColor();
+  // vvv Don't change vvv
+const items = [
+  { name: 'ball', points: 2 },
+  { name: 'coin', points: 3 },
+  { name: 'candy', points: 4}
+];
+// ^^^ Don't change ^^^
+
+const result = items.map(
+  /* ==vvv Replace this code vvv== */
+  (item) => {return item.name}
+  /* ==^^^ Replace this code ^^^== */
+);
+console.log(result)
+
+
+// vvv Don't change vvv
+// test('Map', assert => {
+//   const msg = 'Should extract names from objects';
+//   const expected = [
+//     'ball', 'coin', 'candy'
+//   ];
+
+//   assert.same(result, expected, msg);
+//   assert.end();
+// });
+// ^^^ Don't change ^^^
+
+</script>
+</head>
+<body>
+  
+</body>
+</html>
